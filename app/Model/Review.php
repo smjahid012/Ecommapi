@@ -2,13 +2,17 @@
 
 namespace App\Model;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Model\Product;
+use Illuminate\Database\Eloquent\Model;
+
 
 class Review extends Model
 {
-    public function product(){
-        //Reviews Belongs To Product
-        return $this->belongsTo(Product::class);
+	protected $fillable = [
+		'star','customer','review'
+	];
+    public function product()
+    {
+    	return $this->belongsTo(Product::class); 
     }
 }
