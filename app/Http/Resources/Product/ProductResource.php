@@ -15,6 +15,7 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         return [
+            //showing single product injson
             'name' => $this->name,
             'description' =>$this->detail,
             'price' => $this->price,
@@ -28,8 +29,9 @@ class ProductResource extends JsonResource
             //If reviews count 0 then it will Undefined.Return Error
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star')/$this->reviews->count(),2) : 'No Rating Yet Given',
             //Reviews Href 
-            'href' => route('reviews.index', $this->id)
-
+            'href' => [
+                'link' =>route('reviews.index', $this->id)
+            ]
         ];
     }
 }
